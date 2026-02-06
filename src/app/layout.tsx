@@ -12,8 +12,23 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Starsoft NFT Marketplace',
-  description: 'Marketplace de NFTs exclusivo',
+  title: 'Starsoft NFT Marketplace | Colecione os melhores NFTs',
+  description:
+    'Descubra e colecione NFTs exclusivos no marketplace da Starsoft. Itens raros, armas lendárias e muito mais para sua coleção digital.',
+  keywords: ['NFT', 'Marketplace', 'Crypto', 'Starsoft', 'Colecionáveis'],
+  openGraph: {
+    title: 'Starsoft NFT Marketplace',
+    description: 'Descubra e colecione NFTs exclusivos no marketplace da Starsoft.',
+    type: 'website',
+    locale: 'pt_BR',
+    // url: 'https://seusite.com', // Adicionar URL real
+    siteName: 'Starsoft NFT Marketplace',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Starsoft NFT Marketplace',
+    description: 'Descubra e colecione NFTs exclusivos.',
+  },
 };
 
 export default function RootLayout({
@@ -23,6 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <meta name="theme-color" content="#191A20" />
+      </head>
       <body className={poppins.variable}>
         <Providers>
           {children}

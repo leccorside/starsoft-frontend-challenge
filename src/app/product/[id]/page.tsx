@@ -23,16 +23,16 @@ export default function ProductPage() {
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
-  const isInCart = product ? cartItems.some((item) => item.id === product.id) : false;
+  const isInCart = product ? cartItems.some(item => item.id === product.id) : false;
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         if (id) {
-          // Note: In a real app with SSG/SSR we might pass data via props,
-          // but for this dynamic client route we fetch on mount
           const data = await getProductById(id);
           setProduct(data);
+          // Set page title dynamically
+          document.title = `${data.name} | Starsoft NFT Marketplace`;
         }
       } catch (err) {
         console.error(err);
@@ -47,16 +47,14 @@ export default function ProductPage() {
 
   const handleAddToCart = () => {
     if (product && !isInCart) {
-      dispatch(
-        addItem({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          image: product.image,
-          description: product.description,
-          quantity: 1,
-        })
-      );
+      dispatch(addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        description: product.description,
+        quantity: 1
+      }));
     }
   };
 
@@ -93,31 +91,31 @@ export default function ProductPage() {
   return (
     <main className={styles.main}>
       <Header />
-
+      
       <div className={styles.content}>
         <div style={{ width: '100%', maxWidth: '1000px' }}>
-          <Link href="/" className={styles.backLink}>
-            <ArrowLeft size={20} />
+          <Link href="/" className={styles.backLink} aria-label="Voltar para a página inicial">
+            <ArrowLeft size={20} aria-hidden="true" />
             Voltar
           </Link>
 
           <article className={styles.product}>
             <div className={styles.product__image}>
-              <Image
-                src={product.image}
-                alt={product.name}
+              <Image 
+                src={product.image} 
+                alt={`Imagem do NFT ${product.name}`}
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 500px"
               />
             </div>
-
+            
             <div className={styles.product__details}>
               <div>
                 <h1 className={styles.product__name}>{product.name}</h1>
                 <div className={styles.product__priceRow}>
-                  <div className={styles.product__price}>
-                    <Image src="/assets/eth-icon.png" alt="ETH" width={32} height={32} />
+                  <div className={styles.product__price} aria-label={`Preço: ${Math.floor(product.price)} Ethereum`}>
+                    <Image src="/assets/eth-icon.png" alt="Símbolo Ethereum" width={32} height={32} />
                     {Math.floor(product.price)} ETH
                   </div>
                 </div>
@@ -128,10 +126,11 @@ export default function ProductPage() {
               </div>
 
               <div className={styles.product__actions}>
-                <button
+                <button 
                   className={styles.product__button}
                   onClick={handleAddToCart}
                   disabled={isInCart}
+                  aria-label={isInCart ? 'Item já adicionado ao carrinho' : `Adicionar ${product.name} ao carrinho`}
                 >
                   {isInCart ? 'Adicionado ao Carrinho' : 'Comprar'}
                 </button>
