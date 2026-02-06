@@ -1,0 +1,45 @@
+{
+  "name": "starsoft-frontend-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leccorside/starsoft-frontend-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/leccorside/starsoft-frontend-challenge/issues"
+  },
+  "homepage": "https://github.com/leccorside/starsoft-frontend-challenge#readme",
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
+    "@tanstack/react-query": "^5.90.20",
+    "axios": "^1.13.4",
+    "framer-motion": "^12.33.0",
+    "lucide-react": "^0.563.0",
+    "next": "latest",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
+    "sass": "^1.97.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "latest",
+    "typescript": "^5.9.3"
+  }
+}
