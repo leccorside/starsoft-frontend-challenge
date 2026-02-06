@@ -1,4 +1,9 @@
-import cartReducer, { addItem, removeItem, toggleCart, updateQuantity } from '@/store/slices/cartSlice';
+import cartReducer, {
+  addItem,
+  removeItem,
+  toggleCart,
+  updateQuantity,
+} from '@/store/slices/cartSlice';
 
 describe('Cart Reducer', () => {
   const initialState = {

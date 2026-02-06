@@ -20,7 +20,6 @@ Você foi designado para desenvolver a interface de um **marketplace de NFTs** (
 ### Requisitos
 
 1. **Uso do Next.js**
-
    - Utilize **Next.js** como o framework principal da aplicação.
    - Aproveite os recursos do Next.js, como:
      - **Renderização no Lado do Servidor (SSR)** e/ou **Geração de Sites Estáticos (SSG)** para otimizar o carregamento das páginas.
@@ -30,7 +29,6 @@ Você foi designado para desenvolver a interface de um **marketplace de NFTs** (
      - **Importação Dinâmica** para carregamento otimizado de componentes pesados.
 
 2. **Interface do Usuário**
-
    - Implemente o design fornecido no link do **Figma**:
      - [Figma Design](https://www.figma.com/design/j9HHfWPPoLyObtlVBeMhTD/Front-end-Challenge?node-id=0-1&t=sWwJ0qlYdwzJHKyJ-0)
    - Siga fielmente o design e as especificações fornecidas.
@@ -38,13 +36,11 @@ Você foi designado para desenvolver a interface de um **marketplace de NFTs** (
    - Implemente navegação entre as páginas utilizando o sistema de roteamento do Next.js.
 
 3. **Gerenciamento de Estado**
-
    - Utilize **Redux** ou **Redux Toolkit** para gerenciar o estado global da aplicação.
    - Configure a store do Redux e implemente os reducers necessários.
    - Gerencie estados como itens no carrinho,
 
 4. **Busca de Dados**
-
    - Use **React Query** para buscar e sincronizar dados da API.
    - A API está documentada em:
      - [Starsoft Challenge API Docs](https://starsoft-challenge-7dfd4a56a575.herokuapp.com/v1/docs)
@@ -53,20 +49,17 @@ Você foi designado para desenvolver a interface de um **marketplace de NFTs** (
    - Trate os estados de **loading**, **sucesso** e **erro** nas requisições.
 
 5. **Animações e Interações**
-
    - Utilize **Framer Motion** para adicionar animações e interações conforme necessário.
    - Garanta que as animações sejam suaves e contribuam para a experiência do usuário.
    - Implemente animações em transições de página, hover em botões e cards, entre outros.
 
 6. **Estilização**
-
    - Use **SASS** ou **Styled Components** para estilizar a aplicação.
    - Organize os estilos de maneira modular e reutilizável.
    - Siga as boas práticas de organização de arquivos e componentes.
    - Garanta a consistência visual em toda a aplicação.
 
 7. **Configuração com Docker**
-
    - Configure o ambiente de desenvolvimento utilizando **Docker** e **Docker Compose**.
    - Crie um arquivo `Dockerfile` para a aplicação Next.js.
    - Crie um arquivo `docker-compose.yml` para orquestrar os serviços necessários.
@@ -74,14 +67,12 @@ Você foi designado para desenvolver a interface de um **marketplace de NFTs** (
    - Documente quaisquer configurações específicas necessárias.
 
 8. **Boas Práticas de Código**
-
    - Aplique os princípios de **Clean Code** em toda a sua implementação.
    - Utilize um padrão de código consistente e configure **ESLint** e **Prettier** no projeto.
    - Documente o código quando necessário para melhorar a legibilidade.
    - Utilize os recursos do **Next.js** para otimização, como importação dinâmica e otimização de imagens.
 
 9. **Testes**
-
    - Escreva testes unitários e/ou de integração para as principais funcionalidades da aplicação utilizando **Jest** e **React Testing Library**.
    - Os testes devem cobrir, no mínimo, os componentes principais e funcionalidades críticas.
    - Garanta que todos os testes passem antes de enviar o projeto.
@@ -89,11 +80,9 @@ Você foi designado para desenvolver a interface de um **marketplace de NFTs** (
 ### Diferenciais (Desejável)
 
 - **TypeScript**
-
   - Utilize **TypeScript** para adicionar tipagem estática ao seu código, aumentando a robustez e manutenção do projeto.
 
 - **SEO e Acessibilidade**
-
   - Implemente boas práticas de **SEO** e **acessibilidade** na aplicação.
   - Utilize o componente `next/head` para manipulação de meta tags.
   - Otimize a performance da aplicação seguindo as recomendações do **Lighthouse**.
@@ -128,4 +117,3 @@ Os seguintes aspectos serão considerados na avaliação:
 ---
 
 Boa sorte! Estamos ansiosos para conhecer o seu trabalho e potencial.
-

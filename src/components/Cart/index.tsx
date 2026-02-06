@@ -48,7 +48,7 @@ export const Cart = () => {
             className={styles.backdrop}
             onClick={() => dispatch(toggleCart())}
           />
-          
+
           <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
@@ -57,10 +57,7 @@ export const Cart = () => {
             className={styles.cart}
           >
             <header className={styles.cart__header}>
-              <button 
-                className={styles.cart__backButton}
-                onClick={() => dispatch(toggleCart())}
-              >
+              <button className={styles.cart__backButton} onClick={() => dispatch(toggleCart())}>
                 <ArrowLeft size={20} />
               </button>
               <h2 className={styles.cart__title}>Mochila de Compras</h2>
@@ -68,28 +65,23 @@ export const Cart = () => {
 
             <div className={styles.cart__items}>
               {items.length === 0 ? (
-                <div className={styles.cart__empty}>
-                  Sua mochila está vazia
-                </div>
+                <div className={styles.cart__empty}>Sua mochila está vazia</div>
               ) : (
                 items.map((item) => (
                   <div key={item.id} className={styles.item}>
                     <div className={styles.item__image}>
-                      <Image 
-                        src={item.image} 
-                        alt={item.name} 
-                        fill
-                        sizes="35%"
-                      />
+                      <Image src={item.image} alt={item.name} fill sizes="35%" />
                     </div>
-                    
+
                     <div className={styles.item__details}>
                       <div className={styles.item__info}>
                         <h3 className={styles.item__name}>{item.name}</h3>
                         <p className={styles.item__description}>
-                          {truncateDescription(item.description || 'Redesigned from scratch and completely revised.')}
+                          {truncateDescription(
+                            item.description || 'Redesigned from scratch and completely revised.'
+                          )}
                         </p>
-                        
+
                         <div className={styles.item__price}>
                           <Image src="/assets/eth-icon.png" alt="ETH" width={16} height={16} />
                           {Math.floor(item.price)} ETH
@@ -106,7 +98,7 @@ export const Cart = () => {
                         </div>
                       </div>
 
-                      <button 
+                      <button
                         className={styles.item__remove}
                         onClick={() => dispatch(removeItem(item.id))}
                       >
@@ -126,8 +118,8 @@ export const Cart = () => {
                   {formattedTotal} ETH
                 </span>
               </div>
-              
-              <button 
+
+              <button
                 className={styles.cart__checkoutButton}
                 onClick={handleCheckout}
                 disabled={items.length === 0}

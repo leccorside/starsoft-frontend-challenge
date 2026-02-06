@@ -23,13 +23,13 @@ export default function ProductPage() {
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
-  const isInCart = product ? cartItems.some(item => item.id === product.id) : false;
+  const isInCart = product ? cartItems.some((item) => item.id === product.id) : false;
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         if (id) {
-          // Note: In a real app with SSG/SSR we might pass data via props, 
+          // Note: In a real app with SSG/SSR we might pass data via props,
           // but for this dynamic client route we fetch on mount
           const data = await getProductById(id);
           setProduct(data);
@@ -47,14 +47,16 @@ export default function ProductPage() {
 
   const handleAddToCart = () => {
     if (product && !isInCart) {
-      dispatch(addItem({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        description: product.description,
-        quantity: 1
-      }));
+      dispatch(
+        addItem({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          description: product.description,
+          quantity: 1,
+        })
+      );
     }
   };
 
@@ -91,7 +93,7 @@ export default function ProductPage() {
   return (
     <main className={styles.main}>
       <Header />
-      
+
       <div className={styles.content}>
         <div style={{ width: '100%', maxWidth: '1000px' }}>
           <Link href="/" className={styles.backLink}>
@@ -101,15 +103,15 @@ export default function ProductPage() {
 
           <article className={styles.product}>
             <div className={styles.product__image}>
-              <Image 
-                src={product.image} 
+              <Image
+                src={product.image}
                 alt={product.name}
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 500px"
               />
             </div>
-            
+
             <div className={styles.product__details}>
               <div>
                 <h1 className={styles.product__name}>{product.name}</h1>
@@ -126,7 +128,7 @@ export default function ProductPage() {
               </div>
 
               <div className={styles.product__actions}>
-                <button 
+                <button
                   className={styles.product__button}
                   onClick={handleAddToCart}
                   disabled={isInCart}

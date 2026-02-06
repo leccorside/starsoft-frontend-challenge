@@ -16,20 +16,22 @@ interface ProductCardProps {
 export const ProductCard = ({ product }: ProductCardProps) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.cart.items);
-  
-  const isInCart = cartItems.some(item => item.id === product.id);
+
+  const isInCart = cartItems.some((item) => item.id === product.id);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!isInCart) {
-      dispatch(addItem({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        description: product.description,
-        quantity: 1
-      }));
+      dispatch(
+        addItem({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          description: product.description,
+          quantity: 1,
+        })
+      );
     }
   };
 
@@ -42,7 +44,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <motion.article 
+    <motion.article
       className={styles.card}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -51,8 +53,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     >
       <Link href={`/product/${product.id}`} className={styles.card__link}>
         <div className={styles.card__image}>
-          <Image 
-            src={product.image} 
+          <Image
+            src={product.image}
             alt={product.name}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -60,25 +62,17 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </div>
         <div className={styles.card__content}>
           <h3 className={styles.card__title}>{product.name}</h3>
-          
-          <p className={styles.card__description}>
-            {truncateDescription(product.description)}
-          </p>
+
+          <p className={styles.card__description}>{truncateDescription(product.description)}</p>
 
           <div className={styles.card__priceRow}>
             <div className={styles.card__ethIcon}>
-              <Image 
-                src="/assets/eth-icon.png" 
-                alt="ETH" 
-                fill 
-              />
+              <Image src="/assets/eth-icon.png" alt="ETH" fill />
             </div>
-            <p className={styles.card__price}>
-              {formattedPrice} ETH
-            </p>
+            <p className={styles.card__price}>{formattedPrice} ETH</p>
           </div>
 
-          <motion.button 
+          <motion.button
             className={`${styles.card__button} ${isInCart ? styles['card__button--added'] : ''}`}
             onClick={handleAddToCart}
             disabled={isInCart}

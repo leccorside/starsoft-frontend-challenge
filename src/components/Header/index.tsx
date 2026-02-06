@@ -10,7 +10,7 @@ import styles from './styles.module.scss';
 export const Header = () => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.items);
-  
+
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
@@ -18,17 +18,17 @@ export const Header = () => {
       <div className={styles.header__container}>
         <Link href="/" className={styles.header__logo}>
           <div className={styles.header__logoWrapper}>
-            <Image 
-              src="/assets/logo.png" 
-              alt="Starsoft" 
+            <Image
+              src="/assets/logo.png"
+              alt="Starsoft"
               fill
               sizes="(max-width: 768px) 150px, 200px"
               priority
             />
           </div>
         </Link>
-        
-        <button 
+
+        <button
           className={styles.header__cart}
           onClick={() => dispatch(toggleCart())}
           aria-label={`Carrinho com ${totalItems} itens`}
