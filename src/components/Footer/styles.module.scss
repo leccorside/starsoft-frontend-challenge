@@ -1,0 +1,16 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.footer {
+  padding: $spacing-xl 0;
+  text-align: center;
+  background-color: transparent;
+  margin-top: auto; // Push to bottom if content is short
+
+  &__text {
+    font-size: 0.875rem;
+    color: $color-text-light;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}

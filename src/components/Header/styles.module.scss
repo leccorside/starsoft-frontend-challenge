@@ -1,0 +1,72 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  position: relative;
+  z-index: 10;
+  
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logoWrapper {
+    position: relative;
+    width: 140px;
+    height: 40px;
+
+    @include respond-to(md) {
+      width: 160px;
+      height: 45px;
+    }
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  &__cart {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    color: $color-white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+      position: relative;
+    }
+
+    &-count {
+      background-color: $color-primary;
+      color: $color-white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      min-width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: $spacing-xs;
+    }
+  }
+}

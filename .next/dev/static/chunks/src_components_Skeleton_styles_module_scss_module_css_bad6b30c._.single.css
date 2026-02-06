@@ -1,0 +1,51 @@
+/* [project]/src/components/Skeleton/styles.module.scss.module.css [app-client] (css) */
+.styles-module-scss-module__nrLt8G__skeleton {
+  background-color: #232323;
+  border-radius: 16px;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  animation: 1.5s infinite styles-module-scss-module__nrLt8G__pulse;
+  display: flex;
+}
+
+.styles-module-scss-module__nrLt8G__skeleton__image {
+  aspect-ratio: 1;
+  background-color: #393939;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.styles-module-scss-module__nrLt8G__skeleton__text {
+  background-color: #393939;
+  border-radius: 4px;
+  width: 80%;
+  height: 20px;
+}
+
+.styles-module-scss-module__nrLt8G__skeleton__text--short {
+  width: 40%;
+}
+
+.styles-module-scss-module__nrLt8G__skeleton__button {
+  background-color: #393939;
+  border-radius: 8px;
+  height: 40px;
+  margin-top: auto;
+}
+
+@keyframes styles-module-scss-module__nrLt8G__pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=src_components_Skeleton_styles_module_scss_module_css_bad6b30c._.single.css.map*/

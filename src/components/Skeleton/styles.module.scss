@@ -1,0 +1,42 @@
+@use '../../styles/abstracts/variables' as *;
+
+.skeleton {
+  background-color: $color-secondary;
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  animation: pulse 1.5s infinite;
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: $color-surface;
+    border-radius: $border-radius-md;
+  }
+
+  &__text {
+    height: 20px;
+    background-color: $color-surface;
+    border-radius: $border-radius-sm;
+    width: 80%;
+
+    &--short {
+      width: 40%;
+    }
+  }
+
+  &__button {
+    height: 40px;
+    background-color: $color-surface;
+    border-radius: $border-radius-md;
+    margin-top: auto;
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}

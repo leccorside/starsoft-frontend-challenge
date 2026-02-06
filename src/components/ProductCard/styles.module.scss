@@ -1,0 +1,75 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.card {
+  background-color: $color-secondary;
+  border-radius: $border-radius-lg;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  transition: transform 0.2s ease;
+  border: 1px solid transparent;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba($color-primary, 0.3);
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1;
+    position: relative;
+    border-radius: $border-radius-md;
+    overflow: hidden;
+    background-color: $color-background;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: $color-white;
+  }
+
+  &__price {
+    font-size: 0.875rem;
+    color: $color-text-light;
+    
+    strong {
+      color: $color-primary;
+      font-weight: 600;
+      margin-left: $spacing-xs;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: $border-radius-md;
+    padding: $spacing-sm;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: filter 0.2s;
+    margin-top: auto;
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
