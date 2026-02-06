@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Providers from "@/providers/Providers";
+import { Cart } from "@/components/Cart";
 import "@/styles/globals.scss";
 
 const poppins = Poppins({
@@ -23,7 +24,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={poppins.variable}>
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+          <Cart />
+        </Providers>
       </body>
     </html>
   );

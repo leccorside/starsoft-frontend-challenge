@@ -33,7 +33,7 @@ export const Header = () => {
           onClick={() => dispatch(toggleCart())}
           aria-label={`Carrinho com ${totalItems} itens`}
         >
-          <ShoppingBag size={24} color="#FFFFFF" />
+          <ShoppingBag size={24} color="#FF8310" />
           <span>{totalItems}</span>
         </button>
       </div>

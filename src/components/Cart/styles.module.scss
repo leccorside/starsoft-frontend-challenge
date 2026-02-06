@@ -1,0 +1,239 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  background-color: $color-secondary;
+  z-index: 100;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-lg;
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__backButton {
+    background-color: $color-surface;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    transition: filter 0.2s;
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &__items {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding-right: $spacing-xs;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-surface;
+      border-radius: 2px;
+    }
+  }
+
+  &__empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-text-light;
+    font-size: 1rem;
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding-top: $spacing-lg;
+    border-top: 1px solid $color-surface;
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #fff;
+
+    span:last-child {
+      color: $color-white;
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+    }
+  }
+
+  &__checkoutButton {
+    width: 100%;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    padding: 16px;
+    border-radius: $border-radius-md;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: filter 0.2s;
+
+    &:hover:not(:disabled) {
+      filter: brightness(1.1);
+    }
+
+    &:disabled {
+      background-color: $color-surface;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  gap: $spacing-md;
+  background-color: $color-surface;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  position: relative;
+
+  &__image {
+    width: 35%;
+    position: relative;
+    border-radius: $border-radius-sm;
+    overflow: hidden;
+    background-color: $color-secondary;
+    flex-shrink: 0;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  &__details {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  &__description {
+    font-size: 0.75rem;
+    color: #757575;
+    margin: 4px 0;
+    line-height: 1.2;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: $color-white;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    background-color: $color-background;
+    border-radius: $border-radius-sm;
+    padding: 2px;
+    width: fit-content;
+    
+    button {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-text-light;
+      font-size: 1rem;
+      
+      &:hover {
+        color: $color-white;
+      }
+    }
+
+    span {
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0 8px;
+      min-width: 20px;
+      text-align: center;
+    }
+  }
+
+  &__remove {
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 0.2s;
+    margin-bottom: 4px; // Align with quantity input visually
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  backdrop-filter: blur(2px);
+}
