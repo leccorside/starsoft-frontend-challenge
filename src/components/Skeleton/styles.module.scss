@@ -35,6 +35,47 @@
   }
 }
 
+.cartSkeleton {
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  background-color: transparent; // No background for the item container itself in cart usually
+  border-bottom: 1px solid rgba($color-white, 0.05);
+  animation: pulse 1.5s infinite;
+
+  &__image {
+    width: 80px;
+    height: 80px;
+    background-color: $color-surface;
+    border-radius: $border-radius-md;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    justify-content: center;
+  }
+
+  &__line {
+    height: 14px;
+    background-color: $color-surface;
+    border-radius: $border-radius-sm;
+    width: 100%;
+
+    &--short {
+      width: 60%;
+    }
+
+    &--price {
+      width: 40%;
+      margin-top: auto;
+    }
+  }
+}
+
 @keyframes pulse {
   0% {
     opacity: 1;

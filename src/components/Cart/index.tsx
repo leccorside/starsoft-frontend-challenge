@@ -1,17 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Trash2, Minus, Plus } from 'lucide-react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { toggleCart, removeItem, updateQuantity } from '@/store/slices/cartSlice';
+import { CartItemSkeleton } from '@/components/Skeleton';
 import styles from './styles.module.scss';
 
 export const Cart = () => {
   const dispatch = useAppDispatch();
   const { items, isOpen } = useAppSelector((state) => state.cart);
   const [isCheckout, setIsCheckout] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsLoading(true);
+      // Simula um carregamento rápido para exibir o skeleton
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 800);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
   const total = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const formattedTotal = Math.floor(total);
@@ -64,7 +77,11 @@ export const Cart = () => {
             </header>
 
             <div className={styles.cart__items}>
-              {items.length === 0 ? (
+              {isLoading ? (
+                Array.from({ length: 3 }).map((_, i) => (
+                  <CartItemSkeleton key={`skeleton-${i}`} />
+                ))
+              ) : items.length === 0 ? (
                 <div className={styles.cart__empty}>Sua mochila está vazia</div>
               ) : (
                 items.map((item) => (

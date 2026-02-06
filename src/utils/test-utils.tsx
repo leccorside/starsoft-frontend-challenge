@@ -17,7 +17,7 @@ export function renderWithProviders(
     preloadedState = {},
     store = configureStore({
       reducer: { cart: cartReducer },
-      preloadedState,
+      preloadedState: preloadedState as any, // Cast to any to avoid strict type checking issues in tests
     }),
     ...renderOptions
   }: ExtendedRenderOptions = {}

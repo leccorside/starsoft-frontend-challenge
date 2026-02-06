@@ -37,7 +37,7 @@ Bem-vindo ao repositório do Marketplace de NFTs desenvolvido como parte do desa
 
 1.  Clone o repositório e acesse a pasta:
     ```bash
-    git clone https://github.com/seu-usuario/starsoft-frontend-challenge.git
+    git clone https://github.com/leccorside/starsoft-frontend-challenge.git
     cd starsoft-frontend-challenge
     ```
 
@@ -81,6 +81,7 @@ npm run test:watch
 *   **Next.js App Router:** Escolhido pela performance, suporte a Server Components e facilidade de roteamento.
 *   **Redux Toolkit:** Utilizado para gerenciar o estado do carrinho de compras de forma previsível e escalável.
 *   **React Query:** Implementado para cacheamento, estados de loading/erro e paginação infinita da API, separando o estado do servidor do estado da UI.
+*   **API Fallback:** A API fornecida não possui um endpoint público documentado para busca de produto único (`/products/:id`). Foi implementada uma lógica de fallback que busca uma lista maior e filtra pelo ID no lado do cliente para garantir o funcionamento da página de detalhes.
 *   **SASS Modules:** Permite estilos escopados por componente, evitando conflitos de nomes, mantendo a organização e aproveitando o poder do SASS (variáveis, mixins).
 *   **Dockerfile Multi-stage:** Configurado para otimizar o tamanho da imagem final e separar as dependências de build das de produção.
 
