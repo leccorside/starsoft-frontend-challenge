@@ -9,6 +9,9 @@
   position: relative;
   z-index: 10;
   
+  // Adiciona a borda sutil abaixo do header
+  border-bottom: 1px solid rgba($color-white, 0.05);
+  
   &__container {
     @include container;
     display: flex;

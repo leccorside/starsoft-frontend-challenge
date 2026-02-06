@@ -1,0 +1,122 @@
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  @include container;
+  flex: 1;
+  padding-top: $spacing-xl;
+  padding-bottom: $spacing-xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  width: 100%;
+  max-width: 1000px;
+  background-color: $color-secondary; // Card background #232323 based on variables but let's use secondary to stand out from bg
+  padding: $spacing-xl;
+  border-radius: $border-radius-lg;
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xxl;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1;
+    position: relative;
+    border-radius: $border-radius-md;
+    overflow: hidden;
+    background-color: $color-background;
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $spacing-lg;
+  }
+
+  &__name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $color-white;
+    margin: 0;
+  }
+
+  &__description {
+    font-size: 1rem;
+    color: $color-text-light;
+    line-height: 1.6;
+  }
+
+  &__priceRow {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $color-white;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__actions {
+    margin-top: $spacing-lg;
+  }
+
+  &__button {
+    width: 100%;
+    background-color: $color-primary;
+    color: $color-white;
+    border: none;
+    padding: 16px;
+    border-radius: $border-radius-md;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: filter 0.2s;
+
+    &:hover:not(:disabled) {
+      filter: brightness(1.1);
+    }
+
+    &:disabled {
+      background-color: #2E2E2E;
+      cursor: default;
+    }
+  }
+}
+
+.backLink {
+  color: $color-text-light;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-lg;
+  font-weight: 500;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

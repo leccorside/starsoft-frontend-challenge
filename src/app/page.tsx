@@ -7,6 +7,7 @@ import { ProductSkeleton } from '@/components/Skeleton';
 import { useInfiniteProducts } from '@/hooks/useProducts';
 import styles from './home.module.scss';
 import { Fragment } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const { 
@@ -32,7 +33,12 @@ export default function Home() {
       <Header />
       
       <div className={styles.content}>
-        <div className={styles.content__grid}>
+        <motion.div 
+          className={styles.content__grid}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ staggerChildren: 0.1 }}
+        >
           {isLoading ? (
             Array.from({ length: 8 }).map((_, i) => (
               <ProductSkeleton key={i} />
@@ -56,22 +62,26 @@ export default function Home() {
               <ProductSkeleton key={`loading-more-${i}`} />
             ))
           )}
-        </div>
+        </motion.div>
 
         {!isLoading && !isError && (
           <div className={styles.content__actions}>
             {/* Progress Bar */}
             <div className={styles.content__progressBarContainer}>
-              <div 
+              <motion.div 
                 className={styles.content__progressBar} 
-                style={{ width: `${progressPercentage}%` }}
+                initial={{ width: 0 }}
+                animate={{ width: `${progressPercentage}%` }}
+                transition={{ duration: 0.5 }}
               />
             </div>
 
-            <button 
+            <motion.button 
               className={styles.content__loadMore}
               onClick={() => fetchNextPage()}
               disabled={!hasNextPage || isFetchingNextPage}
+              whileHover={!(!hasNextPage || isFetchingNextPage) ? { scale: 1.02 } : {}}
+              whileTap={!(!hasNextPage || isFetchingNextPage) ? { scale: 0.98 } : {}}
             >
               {isFetchingNextPage 
                 ? 'Carregando...' 
@@ -79,7 +89,7 @@ export default function Home() {
                   ? 'Carregar mais' 
                   : 'Você já viu tudo'
               }
-            </button>
+            </motion.button>
           </div>
         )}
       </div>

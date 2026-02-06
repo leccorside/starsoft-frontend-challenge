@@ -7,13 +7,15 @@
   padding: $spacing-lg;
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
-  transition: transform 0.2s ease;
   border: 1px solid transparent;
+  height: 100%;
+  // Transitions handled by Framer Motion
 
-  &:hover {
-    transform: translateY(-4px);
-    border-color: rgba($color-primary, 0.3);
+  &__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
   }
 
   &__image {
@@ -27,6 +29,14 @@
 
     img {
       object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  // Hover effect on image scale
+  &:hover {
+    .card__image img {
+      transform: scale(1.05);
     }
   }
 
@@ -34,6 +44,7 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-sm;
+    flex: 1;
   }
 
   &__title {
@@ -97,8 +108,8 @@
     }
 
     &--added {
-      background-color: #2E2E2E; // Dark gray when added
-      color: $color-white; // Keep text white or change if needed
+      background-color: #2E2E2E;
+      color: $color-white;
       cursor: default;
       
       &:hover {
