@@ -4,20 +4,28 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductSkeleton } from '@/components/Skeleton';
+import { useInfiniteProducts } from '@/hooks/useProducts';
 import styles from './home.module.scss';
-
-// Mock data for initial layout test (will be replaced by API in Item 2.2)
-const MOCK_PRODUCTS = Array.from({ length: 8 }).map((_, i) => ({
-  id: i + 1,
-  name: `NFT Item ${i + 1}`,
-  price: 0.5 + i * 0.1,
-  image: '/assets/logo.png', // Fallback image for now
-  description: 'Description',
-  createdAt: new Date().toISOString()
-}));
+import { Fragment } from 'react';
 
 export default function Home() {
-  const isLoading = false; 
+  const { 
+    data, 
+    fetchNextPage, 
+    hasNextPage, 
+    isFetchingNextPage, 
+    status 
+  } = useInfiniteProducts();
+
+  const isLoading = status === 'pending';
+  const isError = status === 'error';
+
+  // Calculate progress
+  const totalProducts = data?.pages[0]?.count || 0;
+  const loadedProducts = data?.pages.flatMap(page => page.products).length || 0;
+  const progressPercentage = totalProducts > 0 
+    ? Math.min((loadedProducts / totalProducts) * 100, 100) 
+    : 0;
 
   return (
     <main className={styles.main}>
@@ -29,12 +37,51 @@ export default function Home() {
             Array.from({ length: 8 }).map((_, i) => (
               <ProductSkeleton key={i} />
             ))
+          ) : isError ? (
+            <div style={{ color: 'white', gridColumn: '1/-1', textAlign: 'center' }}>
+              Erro ao carregar produtos. Tente novamente mais tarde.
+            </div>
           ) : (
-            MOCK_PRODUCTS.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            data?.pages.map((page, i) => (
+              <Fragment key={i}>
+                {page.products.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </Fragment>
+            ))
+          )}
+          
+          {isFetchingNextPage && (
+             Array.from({ length: 4 }).map((_, i) => (
+              <ProductSkeleton key={`loading-more-${i}`} />
             ))
           )}
         </div>
+
+        {!isLoading && !isError && (
+          <div className={styles.content__actions}>
+            {/* Progress Bar */}
+            <div className={styles.content__progressBarContainer}>
+              <div 
+                className={styles.content__progressBar} 
+                style={{ width: `${progressPercentage}%` }}
+              />
+            </div>
+
+            <button 
+              className={styles.content__loadMore}
+              onClick={() => fetchNextPage()}
+              disabled={!hasNextPage || isFetchingNextPage}
+            >
+              {isFetchingNextPage 
+                ? 'Carregando...' 
+                : hasNextPage 
+                  ? 'Carregar mais' 
+                  : 'Você já viu tudo'
+              }
+            </button>
+          </div>
+        )}
       </div>
 
       <Footer />
